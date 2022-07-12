@@ -4,6 +4,21 @@ var timeCurrent = moment();
 const totalHour = 9;
 const startHour = 9;
 
+
+function changeClass(element, target) {
+    var classList = ['past', 'present', 'future'];
+    var idx = classList.indexOf(target);
+
+    for (var i = 0; i < classList.length; i++) {
+        if (i === idx) {
+            element.toggleClass(classList[i], true);
+        } else {
+            element.toggleClass(classList[i], false);
+        }
+    }
+};
+
+
 // add function to generate all the needed time rows
 function generateRows() {
     
@@ -11,6 +26,7 @@ function generateRows() {
     o1El.attr("class", "time-block");
     $('div.container').append(o1El);
 
+    // individual rows
     for (var i = startHour; i < startHour + totalHour; i++) {
         var liEl = $("<li>");
         liEl.attr("class", "row");
@@ -36,7 +52,25 @@ function generateRows() {
             'id': str,
             'data-begin': h,
         });
+
+        label.attr("for", inputEl.attr('id'));
+        inputEl.val(localStorage.getItem(inputEl.attr('id')));
+
+        var saveBtn = $('<button>');
+        saveBtn.attr("class", "col-1 saveBtn");
+        saveBtn.html("<i class='fa fa-save'></i>")
+
+        liEl.append(label).append(inputEl).append(saveBtn);
+
+        saveBtn.click(function(e) {callback(e)});
     }
+};
+
+// change color function
+function setTime() {
+
+    dateToday = timeNow.format('dddd, MMMMM DD');
+    $('#currentDay').text(dateToday);
 }
 
 // $('.savedBtn').on('click', function () {
