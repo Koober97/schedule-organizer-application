@@ -69,7 +69,7 @@ function generateRows() {
 // change color function
 function setTime() {
 
-    dateToday = timeNow.format('dddd, MMMMM DD');
+    dateToday = timeCurrent.format('LL');
     $('#currentDay').text(dateToday);
 
     $('textarea').each(function() {
