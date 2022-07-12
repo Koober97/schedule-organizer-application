@@ -71,6 +71,20 @@ function setTime() {
 
     dateToday = timeNow.format('dddd, MMMMM DD');
     $('#currentDay').text(dateToday);
+
+    $('textarea').each(function() {
+        if ($(this).attr('data-begin') < timeCurrent.hour()) {
+            changeClass($(this), 'past');
+        } else if ($(this).attr('data-begin') == timeCurrent.hour()) {
+            changeClass($(this), 'present');
+        } else {
+            changeClass($(this), 'future');
+        }
+    });
+};
+
+// allow callback function for clicking save button eventListener
+function callBack(event) {
 }
 
 // $('.savedBtn').on('click', function () {
