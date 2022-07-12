@@ -85,8 +85,28 @@ function setTime() {
 
 // allow callback function for clicking save button eventListener
 function callBack(event) {
+    var element = $(event.target);
+    if (element.is("i")) {
+        element = element.parent();
+    }
+
+    var inputEl = element.prev();
+    var key = inputEl.attr('id');
+    var value = inputEl.val();
+    localStorage.setItem(key, value);
 }
 
-// $('.savedBtn').on('click', function () {
-//     var value = $(this).sibling
-// }
+$(document).ready(function() {
+    generateRows();
+    setTime();
+
+    // slot time update for every hour
+    var timer = setInterval(function() {
+        timeCurrent = moment();
+        var currentMin = currentTime.minute();
+        minBeforeRefresh = (60 - curMin) % 60;
+        if (minBeforeRefresh === 0) {
+            setTime();
+        }
+    }, 1000 * 60);
+});
