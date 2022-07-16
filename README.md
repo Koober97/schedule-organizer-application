@@ -7,7 +7,7 @@
 * Using my given knowlodge of jQuery and JS, I was able to create an application that stores and saves information typed into the organzier
 
 ## Screenshot of Deployed Application
-!
+![Sample of Deployed Application](assets/screenshot/application-screenshot.png)
 
 ## Deployed Link
 *
