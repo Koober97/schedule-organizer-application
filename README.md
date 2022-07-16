@@ -10,6 +10,6 @@
 ![Sample of Deployed Application](assets/screenshot/application-screenshot.png)
 
 ## Deployed Link
-*
+* https://koober97.github.io/schedule-organizer-application/
 
 ### Created by Brian Koo
