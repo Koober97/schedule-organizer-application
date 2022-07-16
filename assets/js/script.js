@@ -24,13 +24,13 @@ function generateRows() {
     
     var o1El = $("<o1>");
     o1El.attr("class", "time-block");
-    $('div.container').append(o1El);
+    $('.container').append(o1El);
 
     // individual rows
-    for (var i = startHour; i < startHour + totalHour; i++) {
+    for (var i = startHour; i < 18; i++) {
         var liEl = $("<li>");
         liEl.attr("class", "row");
-        $('ol').append(liEl);
+        $('.time-block').append(liEl);
 
         var str = "";
         var h = i % 24;
@@ -62,7 +62,7 @@ function generateRows() {
 
         liEl.append(label).append(inputEl).append(saveBtn);
 
-        saveBtn.click(function(e) {callback(e)});
+        saveBtn.click(callBack);
     }
 };
 
@@ -104,9 +104,11 @@ $(document).ready(function() {
     var timer = setInterval(function() {
         timeCurrent = moment();
         var currentMin = currentTime.minute();
-        minBeforeRefresh = (60 - curMin) % 60;
+        minBeforeRefresh = (60 - currentMin) % 60;
         if (minBeforeRefresh === 0) {
             setTime();
         }
     }, 1000 * 60);
 });
+
+generateRows();
